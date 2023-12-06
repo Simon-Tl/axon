@@ -20,7 +20,6 @@
 * feat: add ckb mbt proof verify precompile contract ([\#1578](https://github.com/axonweb3/axon/pull/1578))
 * feat: support stop at specific height ([\#1581](https://github.com/axonweb3/axon/pull/1581))
 
-
 ### BUG FIXES
 
 - Fix value of gas in JSON RPC Transaction should be gas limit
@@ -33,7 +32,6 @@
 * fix: enable estimation mode for query apis ([\#1603](https://github.com/axonweb3/axon/pull/1603))
 * fix: get pending tx count by number ([\#1605](https://github.com/axonweb3/axon/pull/1605))
 * fix: duplicated calculation in `eth_estimateGas` ([\#1599](https://github.com/axonweb3/axon/pull/1599), [\#1609](https://github.com/axonweb3/axon/pull/1609))
-
 
 ### CODE REFACTORS
 
@@ -48,12 +46,10 @@
 * Update CkbType.sol and ImageCell.sol for consistent ABI output with json file in ([\#1558](https://github.com/axonweb3/axon/pull/1558), [\#1567](https://github.com/axonweb3/axon/pull/1567))
 * ci: refactor OpenZeppelin tests and entry_workflow.yml ([\#1610](https://github.com/axonweb3/axon/pull/1610))
 
-
 ### CHORE
 * ci: adjust CI after migrating the test projects ([\#1513](https://github.com/axonweb3/axon/pull/1513))
 * chore: make blst portable ([\#1520](https://github.com/axonweb3/axon/pull/1520))
 * ci: run unit tests in separate processes ([\#1559](https://github.com/axonweb3/axon/pull/1559))
-
 
 **Full Changelog**: https://github.com/axonweb3/axon/compare/v0.2.0-beta.2...v0.3.0-dev
 
@@ -64,7 +60,7 @@
 
     If you don't change this message, or if this file is empty, the release
     will not be created. -->
-    
+
 This release contains some important bugfixes from the previous 0.2.0-beta.1 version.
 
 ### BUG FIXES
@@ -231,4 +227,3 @@ Release 0.2.0-beta.1 version.
   ([\#1300](https://github.com/axonweb3/axon/pull/1300))
 
 Changelogs before 0.2.0 can be found [here](./CHANGELOG_OLD.md).
-
