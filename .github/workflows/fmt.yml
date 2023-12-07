@@ -24,12 +24,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-
     - uses: actions-rs/toolchain@v1
       with:
         profile: minimal
         components: rustfmt
         toolchain: nightly
+    - uses: editorconfig-checker/action-editorconfig-checker@v2
 
     - name: Cargo +nightly fmt --all -- --check
       run: make check-fmt
@@ -41,3 +41,6 @@ jobs:
 
     - name: Ensure Cargo.toml dependency tables are sorted
       run: make check-sort
+
+    - name: Editor Style Check
+      run: editorconfig-checker
