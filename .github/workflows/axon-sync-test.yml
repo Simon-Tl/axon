@@ -2,6 +2,8 @@ name: Axon sync test
 
 on:
   workflow_dispatch:
+  # TODO: remove `pull_request` event when this workflow is stable
+  pull_request:
 
 jobs:
   Build_and_Archive_Axon:
@@ -33,11 +35,8 @@ jobs:
         # check for AVX2 support by inspecting `/proc/cpuinfo` or running `lscpu`
         # related issue: https://github.com/axonweb3/axon/issues/1387
         lscpu
-        # PORTABLE=1 USE_SSE=1 tell rocksdb to target AVX2
-        PORTABLE=1 USE_SSE=1 cargo build
-    - name: Generate Key
-      run: |
-        openssl rand -hex 32 |xxd -p -r >  devtools/chain/net.key    
+        cargo build
+ 
 
     - name: Archive Axon Artifacts  
       uses: actions/upload-artifact@v3
@@ -47,17 +46,16 @@ jobs:
            target/debug/axon 
            devtools/chain/default.db-options
            devtools/chain/config.toml 
-           devtools/chain/net.key
            devtools/chain/specs/alphanet_nodes/chain-spec.toml
            devtools/ci/scripts/helper.js
            
-        retention-days: 7
+        retention-days: 3
 
         
   Download_and_Start_Axon_Sync:
     name: Download_and_Start_Axon_Sync
     needs:  Build_and_Archive_Axon       
-    runs-on: simon-runner
+    runs-on: simon-runners
     timeout-minutes: 1800
 
     steps:
@@ -69,6 +67,7 @@ jobs:
       run: |
         sed -i 's@multi_address = "/ip4/127.0.0.1/tcp/8001/p2p/QmNk6bBwkLPuqnsrtxpp819XLZY3ymgjs3p1nKtxBVgqxj"@multi_address = "/dns4/axon1/tcp/8001/p2p/QmcgR2Jj6XJ4B9VDp3UaG3dcwFaeqwXikHco9nLq9Eand6"@' devtools/chain/config.toml   
         sed -i 's@bls_privkey_file = "bls.key"@bls_privkey_file = "bls_0.key"@' devtools/chain/config.toml
+        sed -i 's@net_privkey_file = "net.key"@net_privkey_file = "net_0.key"@' devtools/chain/config.toml
 
     - name: Start Axon Node
       env:
