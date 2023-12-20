@@ -125,7 +125,15 @@ jobs:
         EOF
       timeout-minutes: 1800 
 
+    - name: Archive Axon logs
+      uses: actions/upload-artifact@v3
+      with:
+        name: axon-logs
+        path: |
+           logs/axon.log
 
+           
+        retention-days: 3
 
   notice:
     runs-on: ubuntu-latest
