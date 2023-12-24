@@ -52,11 +52,11 @@ configMapGenerator:
 
 - name: db-options
   files:
-  - "../../nodes/default.db-options"
+  - "default.db-options"
 
 - name: chain-spec
   files:
-  - "../../specs/multi_nodes/chain-spec.toml"
+  - "chain-spec.toml"
 
 
 
