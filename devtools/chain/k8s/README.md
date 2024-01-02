@@ -89,9 +89,8 @@ Kubernetes enables you to deploy Axon Chain rapidly while conserving resources.
      - name: axon1
        args:
          - ./axon
-         - init
+         - run
          - --config=/app/devtools/chain/k8s/node_1.toml
-         - --chain-spec=/app/devtools/chain/chain-spec.toml  
     ```
     ```
     cd devtools/chain/k8s/
