@@ -72,49 +72,15 @@ Kubernetes enables you to deploy Axon Chain rapidly while conserving resources.
 
 7. [Generate key](https://github.com/axonweb3/axon/tree/main/core/cli#generate-keypair:~:text=Generate%20Keypair,in%20config%20file.), and update the fields of the chain-spec.yaml and toml files
    
-   - chain-spec.yaml
-   
-   ```bash
-    [[params.verifier_list]]
-    bls_pub_key = "0xa26e3fe1cf51bd4822072c61bdc315ac32e3d3c2e2484bb92942666399e863b4bf56cf2926383cc706ffc15dfebc85c6"
-    pub_key = "0x031ddc35212b7fc7ff6685b17d91f77c972535aee5c7ae5684d3e72b986f08834b"
-    propose_weight = 1
-    vote_weight = 1
+   - (chain-spec.yaml)[https://github.com/axonweb3/axon/blob/axon-deploy-kubernetes/devtools/chain/k8s/multiple/chain-spec.toml#:~:text=interval%20%3D%203000-,%5B%5Bparams.verifier_list%5D%5D,vote_weight%20%3D%201,-axon/devtools/chain]
 
-    [[params.verifier_list]]
-    bls_pub_key = "0x80310fa9df724b5603d283b472ed3bf85254a8a4ceda8a274b421f6cf2be1d9184267cdfe9a199d36ff14e57668a55d0"
-    pub_key = "0x02b77c74eb68af3d4d6cc7884ed6709f1a2a1af0f713382a4438ec2ea3a70d4d7f"
-    propose_weight = 1
-    vote_weight = 1
+   - (node_1.toml)[https://github.com/axonweb3/axon/blob/axon-deploy-kubernetes/devtools/chain/k8s/multiple/node_1.toml#:~:text=%5B%5Bnetwork.,p2p/QmXoSkz4zkHHiFZqmDZQ4gFYtJ72uqtp4m6FX373X4VkRq%22]
 
-    [[params.verifier_list]]
-    bls_pub_key = "0x897721e9016864141a8b982a48217f66ef318ce598aa31842cddaaebe3cd7feab17050022afa6c2123aba39938fe4142"
-    pub_key = "0x027ffd6a6a231561f2afe5878b1c743323b34263d16787130b1815fe35649b0bf5"
-    propose_weight = 1
-    vote_weight = 1
+   - (node_2.toml)[https://github.com/axonweb3/axon/blob/axon-deploy-kubernetes/devtools/chain/k8s/multiple/node_2.toml#:~:text=%5B%5Bnetwork.,p2p/QmXoSkz4zkHHiFZqmDZQ4gFYtJ72uqtp4m6FX373X4VkRq%22]
 
-    [[params.verifier_list]]
-    bls_pub_key = "0x98eef09a3927acb225191101a1d9aa85775fdcdc87b9ba36898f6c132b485d66aef91c0f51cda331be4f985c3be6761c"
-    pub_key = "0x0232c489c23b1207107e9a24648c1e4754a8c1c0b38db96df57a526201035058cb"
-    propose_weight = 1
-    vote_weight = 1
-   ```
+   - (node_3.toml)[https://github.com/axonweb3/axon/blob/axon-deploy-kubernetes/devtools/chain/k8s/multiple/node_3.toml#:~:text=%5B%5Bnetwork.,p2p/QmXoSkz4zkHHiFZqmDZQ4gFYtJ72uqtp4m6FX373X4VkRq%22]
 
-   - node_{1,2,3,4}.toml
-
-   ```bash
-    [[network.bootstraps]]
-    multi_address = "/dns4/axon1/tcp/8001/p2p/QmNk6bBwkLPuqnsrtxpp819XLZY3ymgjs3p1nKtxBVgqxj"
-
-    [[network.bootstraps]]
-    multi_address = "/dns4/axon2/tcp/8001/p2p/QmaHBJqULbLGDn7Td196goNebH6XMTMMu2sKNNP2DiX9S2"
-
-    [[network.bootstraps]]
-    multi_address = "/dns4/axon3/tcp/8001/p2p/QmQLufVVmBuHKoYhdDCqUFYVtLYs1quryoaA1mkQYQdWkn"
-
-    [[network.bootstraps]]
-    multi_address = "/dns4/axon4/tcp/8001/p2p/QmXoSkz4zkHHiFZqmDZQ4gFYtJ72uqtp4m6FX373X4VkRq"
-   ```
+   - (node_4.toml)[https://github.com/axonweb3/axon/blob/axon-deploy-kubernetes/devtools/chain/k8s/multiple/node_4.toml#:~:text=%5B%5Bnetwork.,p2p/QmXoSkz4zkHHiFZqmDZQ4gFYtJ72uqtp4m6FX373X4VkRq%22] 
 
 7. **Start Axon After the axon initialization is successful, modify the axon1 to axon4 statefulset file to the following format**
 
